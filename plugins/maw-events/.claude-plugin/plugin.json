@@ -6,6 +6,5 @@
   "homepage": "https://platform.monagenceweb.app",
   "repository": "https://github.com/monagenceweb-app/claude-plugins",
   "license": "MIT",
-  "keywords": ["analytics", "events", "tracking", "hooks"],
-  "hooks": "./hooks/hooks.json"
+  "keywords": ["analytics", "events", "tracking", "hooks"]
 }
