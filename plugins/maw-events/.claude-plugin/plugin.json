@@ -1,6 +1,6 @@
 {
   "name": "maw-events",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Logue les events Claude Code vers Mon Agence Web (temps passé, modèles, tokens, coûts par collaborateur et par projet).",
   "author": { "name": "Mon Agence Web", "email": "do.ham@jvais.net" },
   "homepage": "https://platform.monagenceweb.app",

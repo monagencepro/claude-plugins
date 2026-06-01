@@ -13,7 +13,7 @@
       "name": "maw-events",
       "source": "./plugins/maw-events",
       "description": "Logue les events Claude Code (prompts, tools, tokens, modèle, durée) vers Mon Agence Web pour l'analyse du temps et des coûts par collaborateur et par projet.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": { "name": "Mon Agence Web" },
       "homepage": "https://platform.monagenceweb.app",
       "keywords": ["analytics", "events", "tracking", "hooks"]
