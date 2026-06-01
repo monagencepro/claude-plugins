@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+// SessionStart hook: if this machine isn't linked yet, kick off the OAuth
+// device flow and surface the approval URL + code to the user (via the
+// hook's additionalContext). No blocking, no daemon — once the user
+// approves, log-event.mjs redeems the token on the next event.
+import { deviceLabel, deviceStart, readPending, readToken, writePending } from './lib.mjs'
+
+function emit(message) {
+  process.stdout.write(
+    JSON.stringify({
+      hookSpecificOutput: { hookEventName: 'SessionStart', additionalContext: message },
+    }),
+  )
+}
+
+if (readToken()) process.exit(0)
+
+const pending = readPending()
+if (pending && Date.parse(pending.expiresAt) > Date.now()) {
+  emit(
+    `Mon Agence Web : enregistrement Claude Code en attente d'autorisation. ` +
+      `Ouvre ${pending.url} et valide le code ${pending.userCode} pour l'activer. ` +
+      `Préviens l'utilisateur.`,
+  )
+  process.exit(0)
+}
+
+try {
+  const d = await deviceStart(deviceLabel())
+  const url = d.verificationUriComplete || d.verificationUri
+  writePending({
+    deviceCode: d.deviceCode,
+    userCode: d.userCode,
+    url,
+    expiresAt: new Date(Date.now() + (d.expiresIn || 600) * 1000).toISOString(),
+  })
+  emit(
+    `Mon Agence Web — pour activer l'enregistrement des events Claude Code sur cette machine, ` +
+      `dis à l'utilisateur d'ouvrir ${url} et de cliquer « Autoriser » (code ${d.userCode}). ` +
+      `L'activation est ensuite automatique, rien d'autre à faire.`,
+  )
+} catch {
+  // endpoint unreachable — stay silent, retry next session
+}
+process.exit(0)

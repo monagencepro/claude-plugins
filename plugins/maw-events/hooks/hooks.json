@@ -1,12 +1,12 @@
 {
   "hooks": {
-    "PostToolUse": [
+    "SessionStart": [
       {
         "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/log-event.sh\" PostToolUse"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.mjs\""
           }
         ]
       }
@@ -17,7 +17,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/log-event.sh\" UserPromptSubmit"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/log-event.mjs\" UserPromptSubmit"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/log-event.mjs\" PostToolUse"
           }
         ]
       }
@@ -28,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/log-event.sh\" Stop"
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/log-event.mjs\" Stop"
           }
         ]
       }
