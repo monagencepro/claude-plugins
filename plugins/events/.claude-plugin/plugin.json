@@ -1,10 +1,10 @@
 {
-  "name": "maw-events",
-  "version": "1.1.0",
+  "name": "events",
+  "version": "2.0.0",
   "description": "Logue les events Claude Code vers Mon Agence Web (temps passé, modèles, tokens, coûts par collaborateur et par projet). Liaison OAuth (device flow), zéro token à copier.",
   "author": { "name": "Mon Agence Web", "email": "do.ham@jvais.net" },
-  "homepage": "https://platform.monagenceweb.app",
-  "repository": "https://github.com/monagenceweb-app/claude-plugins",
+  "homepage": "https://app.monagence.pro",
+  "repository": "https://github.com/monagencepro/claude-plugins",
   "license": "MIT",
   "keywords": ["analytics", "events", "tracking", "hooks", "oauth"]
 }

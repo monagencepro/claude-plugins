@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Explicit device-flow login (also driven by the /maw-login command).
+// Explicit device-flow login (also driven by the /login command).
 // Blocks until the machine is authorized, then writes the token. Useful
 // to (re)link a machine on demand rather than waiting for SessionStart.
 import { exec } from 'node:child_process'

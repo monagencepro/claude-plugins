@@ -1,19 +1,19 @@
 # Mon Agence Web — Claude Code plugins
 
-Marketplace de plugins Claude Code pour [Mon Agence Web](https://platform.monagenceweb.app).
+Marketplace de plugins Claude Code pour [Mon Agence Web](https://app.monagence.pro).
 
 ## Utilisation
 
 ```bash
-/plugin marketplace add monagenceweb-app/claude-plugins
-/plugin install maw-events@monagenceweb
+/plugin marketplace add monagencepro/claude-plugins
+/plugin install events@monagence
 ```
 
 ## Plugins
 
 | Plugin | Description |
 |---|---|
-| [`maw-events`](./plugins/maw-events) | Logue les events Claude Code (prompts, tools, tokens, modèle, durée) vers Mon Agence Web pour l'analyse du temps et des coûts par collaborateur et par projet. |
+| [`events`](./plugins/events) | Logue les events Claude Code (prompts, tools, tokens, modèle, durée) vers Mon Agence Web pour l'analyse du temps et des coûts par collaborateur et par projet. |
 
 ## Déploiement par équipe (optionnel)
 
@@ -23,12 +23,12 @@ collaborateurs, ajoutez à un `.claude/settings.json` (projet ou global) :
 ```json
 {
   "extraKnownMarketplaces": {
-    "monagenceweb": {
-      "source": { "source": "github", "repo": "monagenceweb-app/claude-plugins" }
+    "monagence": {
+      "source": { "source": "github", "repo": "monagencepro/claude-plugins" }
     }
   },
   "enabledPlugins": {
-    "maw-events@monagenceweb": true
+    "events@monagence": true
   }
 }
 ```

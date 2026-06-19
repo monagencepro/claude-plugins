@@ -1,5 +1,5 @@
 {
-  "name": "monagenceweb",
+  "name": "monagence",
   "owner": {
     "name": "Mon Agence Web",
     "email": "do.ham@jvais.net"
@@ -10,12 +10,12 @@
   },
   "plugins": [
     {
-      "name": "maw-events",
-      "source": "./plugins/maw-events",
+      "name": "events",
+      "source": "./plugins/events",
       "description": "Logue les events Claude Code (prompts, tools, tokens, modèle, durée) vers Mon Agence Web. Liaison OAuth device flow, zéro token à copier ; dépend uniquement de node.",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "author": { "name": "Mon Agence Web" },
-      "homepage": "https://platform.monagenceweb.app",
+      "homepage": "https://app.monagence.pro",
       "keywords": ["analytics", "events", "tracking", "hooks"]
     }
   ]

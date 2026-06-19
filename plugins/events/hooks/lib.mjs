@@ -1,4 +1,4 @@
-// Shared helpers for the maw-events plugin. Pure Node (>=18) — no python,
+// Shared helpers for the events plugin. Pure Node (>=18) — no python,
 // curl, jq or git: the only runtime dependency is `node`, which Claude
 // Code already requires to run. Node 18+ ships global `fetch`.
 import {
@@ -13,15 +13,15 @@ import { homedir, hostname } from 'node:os'
 import { basename, dirname, join } from 'node:path'
 
 export const HOOKS_DIR = join(homedir(), '.claude', 'hooks')
-export const TOKEN_FILE = join(HOOKS_DIR, '.maw-token')
-export const PENDING_FILE = join(HOOKS_DIR, '.maw-pending.json')
-export const LOG_FILE = join(HOOKS_DIR, 'maw-events.log')
+export const TOKEN_FILE = join(HOOKS_DIR, '.monagence-token')
+export const PENDING_FILE = join(HOOKS_DIR, '.monagence-pending.json')
+export const LOG_FILE = join(HOOKS_DIR, 'monagence-events.log')
 
-export const BASE_URL = (process.env.MAW_BASE_URL || 'https://platform.monagenceweb.app').replace(
+export const BASE_URL = (process.env.MONAGENCE_BASE_URL || 'https://app.monagence.pro').replace(
   /\/+$/,
   '',
 )
-export const INGEST_URL = process.env.MAW_ENDPOINT || `${BASE_URL}/api/claude/events`
+export const INGEST_URL = process.env.MONAGENCE_ENDPOINT || `${BASE_URL}/api/claude/events`
 
 function ensureDir() {
   try {
@@ -32,7 +32,7 @@ function ensureDir() {
 }
 
 export function readToken() {
-  if (process.env.MAW_TOKEN) return process.env.MAW_TOKEN.trim() || null
+  if (process.env.MONAGENCE_TOKEN) return process.env.MONAGENCE_TOKEN.trim() || null
   try {
     return readFileSync(TOKEN_FILE, 'utf8').trim() || null
   } catch {
