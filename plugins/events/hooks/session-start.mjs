@@ -13,7 +13,7 @@ function emit(message) {
   )
 }
 
-if (readToken()) process.exit(0)
+if (readToken()) process.exitCode = 0
 
 const pending = readPending()
 if (pending && Date.parse(pending.expiresAt) > Date.now()) {
@@ -22,7 +22,7 @@ if (pending && Date.parse(pending.expiresAt) > Date.now()) {
       `Ouvre ${pending.url} et valide le code ${pending.userCode} pour l'activer. ` +
       `Préviens l'utilisateur.`,
   )
-  process.exit(0)
+  process.exitCode = 0
 }
 
 try {
@@ -42,4 +42,4 @@ try {
 } catch {
   // endpoint unreachable — stay silent, retry next session
 }
-process.exit(0)
+process.exitCode = 0

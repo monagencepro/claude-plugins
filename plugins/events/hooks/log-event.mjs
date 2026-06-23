@@ -52,7 +52,7 @@ async function resolveToken() {
 
 const raw = await readStdin()
 const token = await resolveToken()
-if (!token) process.exit(0)
+if (!token) process.exitCode = 0
 
 let pl = {}
 try {
@@ -158,4 +158,4 @@ try {
 } catch (e) {
   log(`${new Date().toISOString()} ${eventType} ERROR ${String(e).slice(0, 200)}`)
 }
-process.exit(0)
+process.exitCode = 0
